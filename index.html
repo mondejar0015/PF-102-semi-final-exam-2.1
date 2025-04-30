@@ -4,28 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tindahan ni Angels</title>
-    <link rel="stylesheet" href="style.css">
+    <link href="styles.css" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <img src="304e8b78-ccbf-4fda-ac3c-6b243de5138f.png" alt="Logo" class="logo">
-        <button class="checkout-btn" onclick="checkout()">Check Out</button>
-        <h1>Welcome to Tindahan ni Angels</h1>
+        <button class="checkout-btn" onclick="openCartSidebar()">Check Out</button>
+        <h1><span id="typed-text"></span></h1>
     </header>
 
     <div class="container">
         <nav class="sidebar">
+            <button class="category-btn" onclick="filterMenu('All')">All Items</button>
             <button class="category-btn" onclick="filterMenu('Burgers')">Burgers</button>
             <button class="category-btn" onclick="filterMenu('Drinks')">Drinks</button>
             <button class="category-btn" onclick="filterMenu('Desserts')">Desserts</button>
             <button class="category-btn" onclick="filterMenu('Meals')">Meals</button>
+            <button class="category-btn" onclick="filterMenu('Sides')">Sides</button>
+            <button class="category-btn" onclick="filterMenu('Specials')">Specials</button>
         </nav>
 
         <main class="menu">
-            <!-- Items will load here -->
+            <!-- Menu items are dynamically loaded -->
         </main>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Cart Sidebar -->
+<div id="cartSidebar" style="display:none;">
+    <h2>Cart</h2>
+    <ul id="cartItemsList"></ul>
+    <p id="cartTotal">Total: $0</p>
+    <button onclick="checkoutPage()">Proceed to Checkout</button>
+    <button onclick="closeCartSidebar()">Close</button>
+ </div>
+ 
+ <!-- Checkout Page -->
+ <div id="checkoutPage" style="display:none;">
+    <h2>Checkout</h2>
+    <ul id="reviewItemsList"></ul>
+    <p id="totalReview">Total: $0</p>
+    <button onclick="goBackToCart()">Back to Cart</button>
+    <button onclick="finalCheckout()">Finalize Checkout</button>
+ </div>
+ 
+
+    <div id="receiptModal" class="modal">
+        <div class="modal-content">
+            <h2>Your Receipt</h2>
+            <div id="receiptItems"></div>
+            <p id="totalPrice"></p>
+            <button onclick="closeReceipt()">Close</button>
+        </div>
+    </div>
+
+    <!-- Notification Pop-up -->
+    <div id="notification" class="notification">
+        <p id="notification-text"></p>
+    </div>
+
+    <script src="scripts.js"></script>
+
 </body>
 </html>
