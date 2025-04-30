@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tindahan ni Angels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <img src="304e8b78-ccbf-4fda-ac3c-6b243de5138f.png" alt="Logo" class="logo">
+        <button class="checkout-btn" onclick="checkout()">Check Out</button>
+        <h1>Welcome to Tindahan ni Angels</h1>
+    </header>
+
+    <div class="container">
+        <nav class="sidebar">
+            <button class="category-btn" onclick="filterMenu('Burgers')">Burgers</button>
+            <button class="category-btn" onclick="filterMenu('Drinks')">Drinks</button>
+            <button class="category-btn" onclick="filterMenu('Desserts')">Desserts</button>
+            <button class="category-btn" onclick="filterMenu('Meals')">Meals</button>
+        </nav>
+
+        <main class="menu">
+            <!-- Items will load here -->
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
