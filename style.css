@@ -1,0 +1,306 @@
+/* Base Styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #fffaf0;
+  margin: 0;
+  padding: 0;
+  color: #222;
+  background-image: linear-gradient(to bottom, #fef9f4, #fff);
+  line-height: 1.6;
+  transition: background-color 0.3s ease;
+}
+
+/* Header */
+header {
+  background-color: #e63946;
+  color: white;
+  padding: 3em 1em; /* Adjusted padding for more height */
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1;
+}
+
+header img {
+  width: 100px; /* Adjust the size as needed */
+  height: 100px; /* Adjust the size as needed */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image fits well in the circular shape */
+  position: absolute;
+  left: 1em; /* Positions the logo on the left side */
+  top: 50%; /* Centers the logo vertically */
+  transform: translateY(-50%); /* Perfectly centers the logo vertically */
+}
+
+
+header h1 {
+  margin: 0;
+  font-size: 3.5em; /* Increased font size for a bolder title */
+  letter-spacing: 3px; /* Increased letter spacing */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Enhanced text shadow for more contrast */
+}
+
+/* Navigation */
+nav {
+  margin-top: 1.5em; /* Increased top margin */
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 0 1rem 1.5rem;
+}
+
+nav button {
+  padding: 0.75em 1.75em;
+  border: none;
+  background-color: #1d3557;
+  color: white;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1em; /* Increased font size */
+  transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s ease;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+nav button:hover {
+  background-color: #457b9d;
+  transform: scale(1.08);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Added more shadow on hover */
+}
+
+/* Main Content */
+main {
+  max-width: 1300px;
+  margin: 2.5em auto; /* Increased top margin */
+  padding: 0 2em;
+}
+
+/* Grid Layout */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 2em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.menu-grid.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Menu Item */
+.item {
+  background-color: white;
+  padding: 1.5em;
+  border-radius: 20px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border 0.25s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  will-change: transform;
+}
+
+.item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.item:hover img {
+  transform: scale(1.05); /* Slightly increased scale */
+  filter: brightness(1.1); /* Brighter image on hover */
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+  transform: rotate(45deg);
+  transition: opacity 0.4s ease;
+  opacity: 0;
+}
+
+.item:hover::before {
+  opacity: 1;
+}
+
+/* Selected Item */
+.item.selected {
+  border: 2px solid #e63946;
+  background-color: #fff0f3;
+  box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Item Image */
+.item img {
+  width: 100%;
+  height: 160px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 1.5em; /* Increased margin for better spacing */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Item Name */
+.item p {
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.2em; /* Increased font size */
+  color: #1d3557;
+  text-shadow: 0.5px 0.5px rgba(0, 0, 0, 0.03);
+}
+
+/* Checkout Bar */
+#checkout-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #1d3557;
+  color: white;
+  padding: 1em 2em;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#checkout-bar.hidden {
+  transform: translateY(100%);
+  opacity: 0;
+}
+
+.checkout-content {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1em;
+}
+
+.checkout-content span {
+  font-size: 1.2em; /* Increased font size */
+  font-weight: 500;
+}
+
+.checkout-content button {
+  background-color: #e63946;
+  border: none;
+  padding: 0.8em 1.75em; /* Increased padding for larger buttons */
+  color: white;
+  font-weight: bold;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.checkout-content button:hover {
+  background-color: #ff5e6c;
+}
+
+/* Accessibility: Focus Styles */
+button:focus,
+.item:focus {
+  outline: 3px solid #a8dadc;
+  outline-offset: 2px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .checkout-content {
+    flex-direction: column;
+    align-items: stretch;
+    text-align: center;
+  }
+
+  .checkout-content button {
+    width: 100%;
+    margin-top: 0.5em;
+  }
+
+  main {
+    padding: 0 1em;
+  }
+}
+
+/* Hide reviews section initially */
+.hidden {
+  display: none;
+}
+
+/* Review Section */
+#reviews-section {
+  margin: 2.5em auto; /* Increased margin for better spacing */
+  padding: 2.5em;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#reviews-section h2 {
+  margin-bottom: 1em;
+}
+
+#reviews-section h3 {
+  margin-top: 1.5em;
+}
+
+#reviews-section form {
+  margin-top: 1em;
+}
+
+#reviews-section label {
+  font-weight: bold;
+}
+
+#reviews-section input,
+#reviews-section textarea {
+  width: 100%;
+  padding: 0.9em; /* Increased padding for better input fields */
+  margin: 0.6em 0;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+#reviews-section button {
+  padding: 0.8em 2em;
+  background-color: #1d3557;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+}
+
+#reviews-section button:hover {
+  background-color: #457b9d;
+}
+
+/* Review Display */
+.review {
+  background-color: #fff;
+  padding: 1.5em;
+  margin-bottom: 1.5em; /* Increased margin for spacing */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review p {
+  margin: 0.5em 0;
+}
