@@ -1,55 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tindahan Burger</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tindahan Ni Angels - Fresh Food Order</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>Tindahan ni Angel</h1>
-    <img src="logo.png" alt="Tindahan ni Angel Logo" />
-  </header>
+    <div class="container-fluid py-4">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Centered Title Section -->
+                <div class="header text-center">
+                    <h2>Tindahan Ni Angels</h2>
+                    <p>Tara na sa Tindahan ng mga Angels</p>
+                </div>
 
-  <nav>
-    <div id="checkout-bar">
-      <div class="checkout-content">
-        <span id="item-count">0 items selected</span>
-        <span id="total-price">$0.00</span>
-        <button onclick="checkout()">Checkout</button>
-      </div>
-    </div>
-    
-    <div class="nav-buttons">
-      <button onclick="filterCategory('Burgers')">Burgers</button>
-      <button onclick="filterCategory('Drinks')">Drinks</button>
-      <button onclick="filterCategory('Desserts')">Desserts</button>
-      <button onclick="filterCategory('Meals')">Meals</button>
-      <button onclick="filterCategory('Specials')">Specials</button>
-      <button onclick="filterCategory('Sides')">Sides</button>
-      <button onclick="viewReviews()">Reviews</button>
-    </div>
-  </nav>
+                <!-- Category Buttons -->
+                <div id="categories">
+                    <button class="category-btn" data-category="🍔">Burgers</button>
+                    <button class="category-btn" data-category="🍕">Pizzas</button>
+                    <button class="category-btn" data-category="🥟">Snacks</button>
+                    <button class="category-btn" data-category="🥤">Drinks</button>
+                    <button class="category-btn" data-category="🍨">Desserts</button>
+                </div>
 
-  <main id="main-content">
-    <div id="menu-items" class="menu-grid"></div>
-    <div id="reviews-section" class="hidden">
-      <h2>Customer Reviews</h2>
-      <div id="reviews-list"></div>
-      <button id="back-to-menu-btn" onclick="backToMenu()">Back to Menu</button>
-      
-      <h3>Leave a Review</h3>
-      <form id="review-form">
-        <label for="name">Your Name:</label>
-        <input type="text" id="name" name="name" required /><br />
-        <label for="review">Review:</label>
-        <textarea id="review" name="review" required></textarea><br />
-        <button type="submit">Submit Review</button>
-      </form>
-    </div>
-  </main>
+                <!-- Products -->
+                <div class="mt-4 row row-cols-1 row-cols-md-3 g-4" id="products">
+                    <!-- Product cards will be dynamically added here -->
+                </div>
+            </div>
 
-  <script src="script.js"></script>
+            <!-- Cart Section -->
+            <div class="col-md-4">
+                <div class="cart">
+                    <h5>Your Cart</h5>
+                    <div id="cart-items"></div>
+                    <hr>
+                    <p>Subtotal: ₱<span id="subtotal">0</span></p>
+                    <p>Tax: ₱<span id="tax">0</span></p>
+                    <h5>Total: ₱<span id="total">0</span></h5>
+
+                    <div class="mt-3">
+                        <label class="form-label">Select Payment Method:</label>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="cash" value="Cash" checked>
+                            <label class="form-check-label" for="cash">Cash</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="gcash" value="GCash">
+                            <label class="form-check-label" for="gcash">GCash</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="paymentMethod" id="card" value="Card">
+                            <label class="form-check-label" for="card">Card</label>
+                        </div>
+                    </div>
+
+                    <div id="deposit-input" style="display: none;">
+                        <label class="form-label" for="deposit">Enter Cash Deposit:</label>
+                        <input type="number" class="form-control" id="deposit" placeholder="Enter Deposit Amount">
+                    </div>
+
+                    <button class="btn-pay w-100 mt-3" onclick="checkout()">Pay!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle JS for Bootstrap functionality -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
